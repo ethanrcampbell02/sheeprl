@@ -1,0 +1,11 @@
+defaults:
+  - default
+  - _self_
+
+id: celeste
+num_envs: 1
+
+wrapper:
+  _target_: sheeprl.envs.celeste.CelesteWrapper
+  action_space: dashless_simple
+  render_mode: rgb_array

@@ -115,6 +115,15 @@ class RestartOnException(gym.Wrapper):
                 self._fails += 1
             if self._fails > self._maxfails:
                 raise RuntimeError(f"The env crashed too many times: {self._fails}")
+            import traceback
+            import sys
+            print("\n" + "="*80, file=sys.stderr)
+            print("EXCEPTION CAUGHT IN WRAPPER:", file=sys.stderr)
+            print(f"Type: {type(e).__name__}", file=sys.stderr)
+            print(f"Message: {e}", file=sys.stderr)
+            print("Full traceback:", file=sys.stderr)
+            traceback.print_exc(file=sys.stderr)
+            print("="*80 + "\n", file=sys.stderr)
             gym.logger.warn(f"RESET - Restarting env after crash with {type(e).__name__}: {e}")
             time.sleep(self._wait)
             self.env = self._env_fn()
