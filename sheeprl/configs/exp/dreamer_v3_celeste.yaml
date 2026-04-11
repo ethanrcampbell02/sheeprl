@@ -2,7 +2,7 @@
 
 defaults:
   - dreamer_v3
-  - override /algo: dreamer_v3_S
+  - override /algo: dreamer_v3_L
   - override /env: celeste
   - _self_
 

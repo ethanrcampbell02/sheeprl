@@ -10,8 +10,8 @@ ACTIONS_SPACE_MAP = {
 }
 
 class CelesteWrapper(gym.Wrapper):
-    def __init__(self, action_space: str = "dashless_simple", render_mode: str = "rgb_array"):
-        env = CelesteEnv(render_mode=render_mode)
+    def __init__(self, action_space: str = "dash_restricted", render_mode: str = "rgb_array"):
+        env = CelesteEnv(render_mode=render_mode, chapter="city", reward_mode="prev")
         env = CelesteActionWrapper(env, ACTIONS_SPACE_MAP[action_space])
         super().__init__(env)
 
